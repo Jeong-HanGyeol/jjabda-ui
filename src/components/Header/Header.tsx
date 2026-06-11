@@ -1,32 +1,34 @@
 import Link from "next/link";
-
-const navLinks = [
-  { href: "/lotto", label: "Lotto" },
-  { href: "/memo", label: "Memo" },
-  { href: "/calc", label: "Calc" },
-];
+import "./Header.style.css";
+import { navLinks } from "./navLinks";
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
+    <header className="h-12 w-full bg-[#1c1c1f]">
+      <div className="flex h-full w-full items-center">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-50"
+          className="flex h-full shrink-0 items-center px-6 text-base font-bold tracking-tight text-white"
         >
-          jjabda
+          JJabda
         </Link>
-        <nav className="flex items-center gap-6">
-          {navLinks.map(({ href, label }) => (
+        <nav className="flex flex-1 items-center gap-1">
+          {navLinks.filter(({ enabled }) => enabled).map(({ href, label, icon }) => (
             <Link
               key={href}
               href={href}
-              className="text-sm text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+              className="nav-link flex items-center gap-1.5 rounded px-2 py-1.5"
             >
-              {label}
+              {icon}
+              <span className="text-sm text-[#ffffff]">
+                {label}
+              </span>
             </Link>
           ))}
         </nav>
+        <div className="flex shrink-0 items-center gap-2 px-4">
+          {/* 로그인, 언어 선택 등 추가 예정 */}
+        </div>
       </div>
     </header>
   );

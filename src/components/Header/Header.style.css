@@ -1,0 +1,6 @@
+.nav-link span {
+  opacity: 0.5;
+}
+.nav-link:hover span {
+  opacity: 0.8;
+}
