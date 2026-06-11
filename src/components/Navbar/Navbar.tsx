@@ -16,6 +16,8 @@ interface NavbarProps {
 export default function Navbar({ color = "#666666", links = [] }: NavbarProps) {
   const pathname = usePathname();
 
+//   test
+
   return (
     <nav className="h-11 w-full" style={{ backgroundColor: color }}>
       <div className="mx-auto flex h-full max-w-270 items-end px-6">
