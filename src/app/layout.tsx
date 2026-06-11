@@ -31,8 +31,16 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
           <Header />
-          <Navbar />
+          <Navbar 
+            color="#5383E8"
+            links={[
+              { href: "/", label: "홈" },
+              { href: "/stats", label: "통계" },
+            ]}
+          />
+
           <main className="flex flex-1 flex-col">{children}</main>
+
           <Footer />
         </body>
     </html>

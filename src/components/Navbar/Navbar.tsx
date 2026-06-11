@@ -2,31 +2,34 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "../Header/navLinks";
+
+interface NavLink {
+  href: string;
+  label: string;
+}
 
 interface NavbarProps {
   color?: string;
+  links?: NavLink[];
 }
 
-export default function Navbar({ color = "#666666" }: NavbarProps) {
+export default function Navbar({ color = "#666666", links = [] }: NavbarProps) {
   const pathname = usePathname();
 
   return (
     <nav className="h-11 w-full" style={{ backgroundColor: color }}>
       <div className="mx-auto flex h-full max-w-270 items-end px-6">
-        {navLinks.filter(({ enabled }) => enabled).map(({ href, label }) => {
-          const isActive = pathname.startsWith(href);
+        {links.map(({ href, label }) => {
+          const isActive = pathname === href;
           return (
             <Link
               key={href}
               href={href}
-              className="flex h-full items-center px-4 text-[15px] transition-colors"
-              style={{
-                color: isActive ? "#ffffff" : "rgba(255,255,255,0.6)",
-                borderBottom: isActive ? "3px solid #ffffff" : "3px solid transparent",
-                paddingBottom: "9px",
-                paddingTop: "12px",
-              }}
+              className={`box-border flex items-center border-b-[3px] mx-3 pb-2.25 pt-3 text-[15px] leading-6 transition-colors hover:border-b-white hover:text-white ${
+                isActive
+                  ? "border-b-white text-white"
+                  : "border-transparent text-white/60"
+              }`}
             >
               {label}
             </Link>
