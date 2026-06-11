@@ -1,0 +1,12 @@
+.nav-link svg {
+  filter: grayscale(1) opacity(0.5);
+}
+.nav-link:hover svg {
+  filter: grayscale(0) opacity(1);
+}
+.nav-link span {
+  opacity: 0.5;
+}
+.nav-link:hover span {
+  opacity: 0.8;
+}
