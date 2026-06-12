@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Header, Navbar } from "@/components";
+import { FooterBanner, Header, HeaderBanner, Navbar } from "@/components";
 import { Footer } from "@/components";
 import "./globals.css";
 
@@ -31,6 +31,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
           <Header />
+          <HeaderBanner adClient={""} adSlot={""}/>
           <Navbar 
             color="#5383E8"
             links={[
@@ -41,6 +42,7 @@ export default function RootLayout({
 
           <main className="flex flex-1 flex-col">{children}</main>
 
+            <FooterBanner adClient={""} adSlot={""}/>
           <Footer />
         </body>
     </html>
